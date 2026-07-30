@@ -34,15 +34,20 @@ export default function App() {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [results, setResults] = useState<SessionResult[]>([]);
 
-  const handleStart = useCallback((categories: QuestionCategory[], selectedMode: InterviewMode, university?: University, onlyCore?: boolean) => {
-    const pool: QuestionWithCategory[] = [];
-    for (const cat of categories) {
-      const qs = questionsData[cat];
-      if (qs) {
-        for (const q of qs) {
-          if (university && q.university && q.university !== university) continue;
-          if (onlyCore && q.university && q.priority !== 'high') continue;
-          pool.push({ question: q, category: cat });
+  const handleStart = useCallback((categories: QuestionCategory[], selectedMode: InterviewMode, university?: University, onlyCore?: boolean, selectedUbcQuestions?: Question[]) => {
+    let pool: QuestionWithCategory[];
+    if (selectedUbcQuestions && selectedUbcQuestions.length > 0) {
+      pool = selectedUbcQuestions.map(q => ({ question: q, category: 'personal_engineering' as QuestionCategory }));
+    } else {
+      pool = [];
+      for (const cat of categories) {
+        const qs = questionsData[cat];
+        if (qs) {
+          for (const q of qs) {
+            if (university && q.university && q.university !== university) continue;
+            if (onlyCore && q.university && q.priority !== 'high') continue;
+            pool.push({ question: q, category: cat });
+          }
         }
       }
     }
