@@ -23,7 +23,9 @@ export default function SessionSummary({ results, mode, onRestart }: SessionSumm
         category: r.category,
         transcript: r.transcript,
         fillerWords: countFillerWords(r.transcript),
-        wpm: calculateWPM(r.transcript, r.question.responseTime),
+        wpm: mode === 'writing'
+          ? (r.transcript ? r.transcript.trim().split(/\s+/).length : 0)
+          : calculateWPM(r.transcript, r.question.responseTime),
       })),
     };
     try {
@@ -35,9 +37,8 @@ export default function SessionSummary({ results, mode, onRestart }: SessionSumm
   }, [results, mode]);
 
   const totalFillerWords = saved.results.reduce((s, r) => s + r.fillerWords, 0);
-  const avgWpm = Math.round(
-    saved.results.reduce((s, r) => s + r.wpm, 0) / saved.results.length
-  );
+  const totalWpm = saved.results.reduce((s, r) => s + r.wpm, 0);
+  const avgWpm = saved.results.length > 0 ? Math.round(totalWpm / saved.results.length) : 0;
 
   const handleCopyAll = () => {
     const combined = results.map((r, i) => {
@@ -87,7 +88,7 @@ export default function SessionSummary({ results, mode, onRestart }: SessionSumm
           {/* Header stats */}
           <div className="text-center">
             <p className="text-xs uppercase tracking-[0.2em] text-gray-400 mb-1">
-              {mode === 'simulation' ? 'Simulation' : 'Practice'} Session
+              {mode === 'simulation' ? 'Simulation' : mode === 'practice' ? 'Practice' : 'Writing'} Session
             </p>
             <p className="text-3xl font-light text-gray-900 mt-2">
               {results.length} Questions Completed
@@ -95,10 +96,19 @@ export default function SessionSummary({ results, mode, onRestart }: SessionSumm
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
-            <div className="border border-gray-200 p-4 text-center">
-              <p className="text-2xl font-mono text-gray-900">{avgWpm}</p>
-              <p className="text-xs text-gray-400 uppercase tracking-wider mt-1">Avg WPM</p>
-            </div>
+            {mode === 'writing' ? (
+              <div className="border border-gray-200 p-4 text-center">
+                <p className="text-2xl font-mono text-gray-900">
+                  {Math.round(results.reduce((s, r) => s + (r.transcript ? r.transcript.trim().split(/\s+/).length : 0), 0) / Math.max(results.length, 1))}
+                </p>
+                <p className="text-xs text-gray-400 uppercase tracking-wider mt-1">Avg Words</p>
+              </div>
+            ) : (
+              <div className="border border-gray-200 p-4 text-center">
+                <p className="text-2xl font-mono text-gray-900">{avgWpm}</p>
+                <p className="text-xs text-gray-400 uppercase tracking-wider mt-1">Avg WPM</p>
+              </div>
+            )}
             <div className="border border-gray-200 p-4 text-center">
               <p className="text-2xl font-mono text-gray-900">{totalFillerWords}</p>
               <p className="text-xs text-gray-400 uppercase tracking-wider mt-1">Total Filler Words</p>
@@ -114,25 +124,27 @@ export default function SessionSummary({ results, mode, onRestart }: SessionSumm
             <p className="text-xs uppercase tracking-[0.2em] text-gray-400 mb-4">
               Per-Question Breakdown
             </p>
-            <div className="space-y-4">
-              {results.map((r, i) => {
-                const fw = countFillerWords(r.transcript);
-                const w = calculateWPM(r.transcript, r.question.responseTime);
-                return (
-                  <div key={i} className="border border-gray-200 p-4">
-                    <div className="flex items-start justify-between mb-2">
-                      <div>
-                        <p className="text-sm text-gray-900 font-medium">
-                          Q{i + 1}. {r.question.focus}
-                        </p>
-                        <p className="text-xs text-gray-400 uppercase tracking-wider mt-0.5">
-                          {formatCat(r.category)}
-                        </p>
+              <div className="space-y-4">
+                {results.map((r, i) => {
+                  const fw = countFillerWords(r.transcript);
+                  const w = mode === 'writing'
+                    ? (r.transcript ? r.transcript.trim().split(/\s+/).length : 0)
+                    : calculateWPM(r.transcript, r.question.responseTime);
+                  return (
+                    <div key={i} className="border border-gray-200 p-4">
+                      <div className="flex items-start justify-between mb-2">
+                        <div>
+                          <p className="text-sm text-gray-900 font-medium">
+                            Q{i + 1}. {r.question.focus}
+                          </p>
+                          <p className="text-xs text-gray-400 uppercase tracking-wider mt-0.5">
+                            {formatCat(r.category)}
+                          </p>
+                        </div>
+                        <span className="text-xs text-gray-400 whitespace-nowrap ml-4">
+                          {fw} fillers · {w} {mode === 'writing' ? 'words' : 'WPM'}
+                        </span>
                       </div>
-                      <span className="text-xs text-gray-400 whitespace-nowrap ml-4">
-                        {fw} fillers · {w} WPM
-                      </span>
-                    </div>
                     <p className="text-xs text-gray-500 leading-relaxed line-clamp-2 mb-3">
                       {r.transcript || '(no transcript)'}
                     </p>
@@ -157,22 +169,24 @@ export default function SessionSummary({ results, mode, onRestart }: SessionSumm
               {copied === 'all' ? 'Copied All Prompts!' : 'Copy All Grading Prompts for Gemini'}
             </button>
 
-            <button
-              onClick={() => {
-                results.forEach((r, i) => {
-                  if (!r.blob) return;
-                  const url = URL.createObjectURL(r.blob);
-                  const a = document.createElement('a');
-                  a.href = url;
-                  a.download = `kira-q${i + 1}-${Date.now()}.webm`;
-                  a.click();
-                  URL.revokeObjectURL(url);
-                });
-              }}
-              className="w-full py-3 border border-gray-900 text-gray-900 text-sm uppercase tracking-[0.2em] hover:bg-gray-900 hover:text-white transition-colors"
-            >
-              Download All Recordings
-            </button>
+            {results.some(r => r.blob) && (
+              <button
+                onClick={() => {
+                  results.forEach((r, i) => {
+                    if (!r.blob) return;
+                    const url = URL.createObjectURL(r.blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = `kira-q${i + 1}-${Date.now()}.webm`;
+                    a.click();
+                    URL.revokeObjectURL(url);
+                  });
+                }}
+                className="w-full py-3 border border-gray-900 text-gray-900 text-sm uppercase tracking-[0.2em] hover:bg-gray-900 hover:text-white transition-colors"
+              >
+                Download All Recordings
+              </button>
+            )}
 
             <button
               onClick={onRestart}

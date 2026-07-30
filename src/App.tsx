@@ -3,6 +3,7 @@ import type { Screen, Question, QuestionCategory, QuestionsData, InterviewMode, 
 import StartScreen from './components/StartScreen';
 import DeviceCheckScreen from './components/DeviceCheckScreen';
 import RecordingModule from './components/RecordingModule';
+import WritingModule from './components/WritingModule';
 import EvaluationScreen from './components/EvaluationScreen';
 import SessionSummary from './components/SessionSummary';
 import questionsData from './data/questions.json';
@@ -97,7 +98,7 @@ export default function App() {
     return <StartScreen questionsData={questionsData} onStart={handleStart} />;
   }
 
-  if (screen === 'device_check') {
+  if (screen === 'device_check' && mode !== 'writing') {
     return (
       <DeviceCheckScreen
         mode={mode}
@@ -107,12 +108,41 @@ export default function App() {
     );
   }
 
+  // Writing mode skips device check and goes straight to writing
+  if (screen === 'device_check' && mode === 'writing') {
+    setScreen('recording');
+    return null;
+  }
+
   if (screen === 'recording' && sessionQuestions[currentQuestionIndex]) {
-    const qwc = sessionQuestions[currentQuestionIndex];
+    const qwc2 = sessionQuestions[currentQuestionIndex];
+    if (mode === 'writing') {
+      return (
+        <WritingModule
+          key={currentQuestionIndex}
+          question={qwc2.question}
+          category={qwc2.category}
+          questionIndex={currentQuestionIndex}
+          totalQuestions={sessionQuestions.length}
+          onComplete={(text) => {
+            setResults((prev) => [...prev, {
+              question: qwc2.question,
+              category: qwc2.category,
+              transcript: text,
+              blob: null,
+              recordedAt: Date.now(),
+            }]);
+            setEvalPhase('question');
+            setScreen('evaluation');
+          }}
+          onCancel={handleRestart}
+        />
+      );
+    }
     return (
       <RecordingModule
         key={currentQuestionIndex}
-        question={qwc.question}
+        question={qwc2.question}
         mode={mode}
         questionIndex={currentQuestionIndex}
         totalQuestions={sessionQuestions.length}

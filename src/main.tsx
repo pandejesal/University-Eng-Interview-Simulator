@@ -3,16 +3,8 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.tsx'
 
-document.addEventListener('keydown', (e) => {
-  const ctrl = e.ctrlKey || e.metaKey;
-  if (ctrl && ['c', 'v', 'x', 'a'].includes(e.key.toLowerCase())) {
-    e.preventDefault();
-  }
-});
-
-document.addEventListener('contextmenu', (e) => {
-  e.preventDefault();
-});
+// Only block shortcuts during the actual recording phase (not globally)
+// The app needs clipboard access for copying grading prompts.
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

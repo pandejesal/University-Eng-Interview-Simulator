@@ -11,12 +11,19 @@ interface PromptInput {
 }
 
 export function buildGradingPrompt(input: PromptInput): string {
+  if (input.university === 'ubc') {
+    return buildUbcPrompt(input);
+  }
+
   const fillerWords = countFillerWords(input.transcript);
   const wpm = calculateWPM(input.transcript, input.recordingDuration);
   const wordCount = input.transcript ? input.transcript.trim().split(/\s+/).length : 0;
 
   const admissionsOfficer = input.university
-    ? `a ruthless ${input.university === 'waterloo' ? 'University of Waterloo' : 'University of Toronto'} Engineering Admissions Officer`
+    ? `a ruthless ${
+        input.university === 'waterloo' ? 'University of Waterloo' :
+        'University of Toronto'
+      } Engineering Admissions Officer`
     : 'a ruthless University of Toronto and Waterloo Engineering Admissions Officer';
 
   return `You are ${admissionsOfficer} evaluating a video interview response. Watch the video carefully — do NOT rely solely on the transcript below.
@@ -194,6 +201,116 @@ ${getCategoryOutputSection(input.category)}
 
 === WHAT WORKED ===
 [1-2 sentences on what was effective, framed as what they should CONTINUE doing]`;
+}
+
+function buildUbcPrompt(input: PromptInput): string {
+  const wordCount = input.transcript ? input.transcript.trim().split(/\s+/).length : 0;
+
+  return `You are a ruthless UBC Engineering Admissions Officer evaluating a written Personal Profile response. This is a practice tool — the candidate wrote this to prepare, NOT for direct submission.
+
+══════════════════════════════════════════════════════
+                    TASK
+══════════════════════════════════════════════════════
+
+You have ONE input:
+  1. The candidate's written response to a Personal Profile prompt (below)
+
+Your job is to:
+  - EVALUATE the response using UBC's 4 evaluation criteria below
+  - FLAG any signs of AI generation or plagiarised content
+  - SCORE each criterion on a 1-10 scale
+  - OUTPUT your evaluation in the exact structured format specified
+
+⚠ IMPORTANT: UBC reviews all Personal Profiles for authenticity. Submitting plagiarised or AI-generated content can result in immediate rejection or blacklisting. If you detect AI-generated passages, note them clearly.
+
+══════════════════════════════════════════════════════
+                  REFERENCE DATA
+══════════════════════════════════════════════════════
+
+Category: ${formatCategory(input.category)}
+Question Asked:
+"""
+${input.question}
+"""
+
+Candidate's Written Response:
+"""
+${input.transcript || '(No response written)'}
+"""
+
+Metrics:
+  - Word count: ${wordCount}
+  - UBC character limit: 2,100 characters per essay
+  - Recommended length: 1,500-2,100 characters
+
+══════════════════════════════════════════════════════
+               UBC EVALUATION CRITERIA
+══════════════════════════════════════════════════════
+
+UBC evaluates Personal Profiles against these 4 criteria:
+
+1. ENGAGEMENT & ACCOMPLISHMENT
+   - Does the response use SPECIFIC examples (not generic statements)?
+   - Are the activities, initiatives, or experiences described with genuine detail?
+   - Does the candidate demonstrate meaningful involvement, not just a list?
+
+2. STRUCTURE
+   - Is the response well-organized and easy to follow?
+   - Does it have a clear narrative arc or logical progression?
+   - Is every sentence purposeful, or is there filler/fluff?
+
+3. SUBSTANCE
+   - Does the candidate show self-awareness and genuine reflection?
+   - Are claims backed by concrete examples and specific outcomes?
+   - Does the answer demonstrate depth of thought?
+
+4. VOICE & AUTHENTICITY
+   - Does this sound like a real 17-18 year old wrote it?
+   - Is the language natural and personal, or overly polished/robotic?
+   - Does the candidate's personality come through?
+   - FLAG any passages that appear AI-generated or excessively formulaic
+
+══════════════════════════════════════════════════════
+            FLUFF & CLICHÉ PENALTY
+══════════════════════════════════════════════════════
+
+Penalize these in your scoring:
+  - Generic statements that could apply to any applicant
+  - Buzzwords without substance ("passionate", "driven", "dedicated" — PROVE it)
+  - Overly complex vocabulary that sounds unnatural for a high school student
+  - Pre-written sentences that don't feel personal
+  - Any sign of AI-generated text (overly balanced structure, generic phrasing)
+
+══════════════════════════════════════════════════════
+           EXACT OUTPUT FORMAT
+══════════════════════════════════════════════════════
+
+You MUST output your evaluation in this exact format:
+
+=== OVERALL ===
+Overall Score: X/10
+Summary: (1-2 sentences on overall impression)
+Plagiarism Risk: [None / Low / Medium / High] — if High, state why
+
+=== UBC CRITERION SCORES ===
+1. Engagement & Accomplishment: X/10 — (1-sentence justification with specific reference to their example)
+2. Structure: X/10 — (1-sentence justification)
+3. Substance: X/10 — (1-sentence justification)
+4. Voice & Authenticity: X/10 — (1-sentence justification with specific reference to language used)
+
+=== STRENGTHS ===
+- [Specific strength with evidence from their response]
+- [Specific strength with evidence from their response]
+
+=== AREAS FOR IMPROVEMENT ===
+- [Specific, actionable suggestion referencing their actual writing]
+- [Specific, actionable suggestion referencing their actual writing]
+
+=== FLUFF FLAGGED ===
+[List each cliché, generic phrase, or AI-sounding passage detected, or "None detected"]
+
+=== FINAL ADVICE ===
+[1-2 sentences of practical advice for revising this specific response before submission]`;
 }
 
 function formatCategory(cat: QuestionCategory): string {

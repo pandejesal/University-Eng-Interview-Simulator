@@ -104,7 +104,7 @@ export default function EvaluationScreen({
             <div className="border border-gray-200 p-4 text-center">
               <p className="text-2xl font-mono text-gray-900">{wpm}</p>
               <p className="text-xs text-gray-400 uppercase tracking-wider mt-1">
-                WPM
+                {recordedBlob ? 'WPM' : 'Words/min'}
               </p>
             </div>
             <div className="border border-gray-200 p-4 text-center">
@@ -115,34 +115,49 @@ export default function EvaluationScreen({
             </div>
             <div className="border border-gray-200 p-4 text-center">
               <p className="text-2xl font-mono text-gray-900">
-                {formatDuration(recordingDuration)}
+                {transcript ? transcript.trim().split(/\s+/).length : 0}
               </p>
               <p className="text-xs text-gray-400 uppercase tracking-wider mt-1">
-                Duration
+                Word Count
               </p>
             </div>
           </div>
 
-          {/* Video playback */}
-          <div>
-            <p className="text-xs uppercase tracking-[0.2em] text-gray-400 mb-3">
-              Your Recording
-            </p>
-            {videoUrl ? (
-              <video
-                ref={videoRef}
-                src={videoUrl}
-                controls
-                className="w-full aspect-video border border-gray-200 bg-black"
-              />
-            ) : (
-              <div className="w-full aspect-video border border-gray-200 bg-gray-50 flex items-center justify-center">
-                <p className="text-xs text-gray-400 uppercase tracking-wider">
-                  No recording available
-                </p>
+          {/* Video playback (only for recorded responses) */}
+          {recordedBlob ? (
+            <div>
+              <p className="text-xs uppercase tracking-[0.2em] text-gray-400 mb-3">
+                Your Recording
+              </p>
+              {videoUrl ? (
+                <video
+                  ref={videoRef}
+                  src={videoUrl}
+                  controls
+                  className="w-full aspect-video border border-gray-200 bg-black"
+                />
+              ) : (
+                <div className="w-full aspect-video border border-gray-200 bg-gray-50 flex items-center justify-center">
+                  <p className="text-xs text-gray-400 uppercase tracking-wider">
+                    No recording available
+                  </p>
+                </div>
+              )}
+            </div>
+          ) : (
+            <div>
+              <p className="text-xs uppercase tracking-[0.2em] text-gray-400 mb-3">
+                Your Written Response
+              </p>
+              <div className="border border-gray-200 p-4 max-h-64 overflow-y-auto bg-gray-50">
+                {transcript ? (
+                  <p className="text-sm text-gray-700 whitespace-pre-wrap leading-relaxed">{transcript}</p>
+                ) : (
+                  <p className="text-xs text-gray-400 italic">No response written.</p>
+                )}
               </div>
-            )}
-          </div>
+            </div>
+          )}
 
           {/* Transcript */}
           <div>
@@ -160,13 +175,15 @@ export default function EvaluationScreen({
 
           {/* Actions */}
           <div className="space-y-3">
-            <button
-              onClick={handleDownload}
-              disabled={!recordedBlob}
-              className="w-full py-3 border border-gray-900 text-gray-900 text-sm uppercase tracking-[0.2em] hover:bg-gray-900 hover:text-white transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
-            >
-              {downloadDone ? 'Downloaded' : 'Download Recording (.webm)'}
-            </button>
+            {recordedBlob && (
+              <button
+                onClick={handleDownload}
+                disabled={!recordedBlob}
+                className="w-full py-3 border border-gray-900 text-gray-900 text-sm uppercase tracking-[0.2em] hover:bg-gray-900 hover:text-white transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
+              >
+                {downloadDone ? 'Downloaded' : 'Download Recording (.webm)'}
+              </button>
+            )}
 
             <button
               onClick={handleCopyPrompt}

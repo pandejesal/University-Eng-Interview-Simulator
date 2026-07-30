@@ -1,4 +1,4 @@
-export type University = 'waterloo' | 'uoft';
+export type University = 'waterloo' | 'uoft' | 'ubc';
 
 export type Priority = 'high' | 'low';
 
@@ -21,7 +21,7 @@ export type QuestionCategory = keyof QuestionsData;
 
 export type Screen = 'start' | 'device_check' | 'recording' | 'evaluation';
 
-export type InterviewMode = 'practice' | 'simulation';
+export type InterviewMode = 'practice' | 'simulation' | 'writing';
 
 export interface SessionResult {
   question: Question;

@@ -24,6 +24,7 @@ function playBeep() {
     gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.3);
     osc.start(ctx.currentTime);
     osc.stop(ctx.currentTime + 0.3);
+    osc.onended = () => ctx.close();
   } catch { }
 }
 
@@ -49,6 +50,7 @@ function playDoubleBeep() {
       gain2.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.25);
       osc2.start(ctx.currentTime);
       osc2.stop(ctx.currentTime + 0.25);
+      osc2.onended = () => ctx.close();
     }, 200);
   } catch { }
 }
@@ -74,7 +76,6 @@ export default function RecordingModule({
   const recognitionRef = useRef<SpeechRecognition | null>(null);
   const transcriptRef = useRef('');
   const prepVideoRef = useRef<HTMLVideoElement>(null);
-  const recordVideoRef = useRef<HTMLVideoElement>(null);
   const responseTimeRef = useRef(question.responseTime);
   responseTimeRef.current = question.responseTime;
   const onCompleteRef = useRef(onComplete);
@@ -164,12 +165,6 @@ export default function RecordingModule({
       recognition.onerror = () => {};
       recognition.start();
       recognitionRef.current = recognition;
-    }
-
-    // Switch video to recording preview
-    if (recordVideoRef.current && streamRef.current) {
-      recordVideoRef.current.srcObject = streamRef.current;
-      recordVideoRef.current.play().catch(() => {});
     }
 
     setPhase('recording');
@@ -302,8 +297,8 @@ export default function RecordingModule({
                 playsInline
                 className="w-full aspect-video object-cover bg-black"
               />
-              {/* Countdown overlay */}
-              {mode === 'simulation' && cameraReady && (
+              {/* Countdown overlay — always visible in simulation, timer starts on mount */}
+              {mode === 'simulation' && (
                 <div className="flex items-center justify-center py-6 bg-gray-900 text-white">
                   <div className="text-center">
                     <p className="text-xs uppercase tracking-[0.2em] text-gray-400 mb-2">Prepare your answer</p>
@@ -327,7 +322,7 @@ export default function RecordingModule({
           {phase === 'recording' && (
             <div className="border border-gray-200 bg-gray-50 overflow-hidden mb-6 relative">
               <video
-                ref={recordVideoRef}
+                ref={el => { if (el && streamRef.current && !el.srcObject) { el.srcObject = streamRef.current; }}}
                 autoPlay
                 muted
                 playsInline
@@ -345,7 +340,7 @@ export default function RecordingModule({
           {phase === 'stopped' && streamRef.current && (
             <div className="border border-gray-200 bg-gray-50 overflow-hidden mb-6">
               <video
-                ref={recordVideoRef}
+                ref={el => { if (el && streamRef.current && !el.srcObject) { el.srcObject = streamRef.current; }}}
                 autoPlay
                 muted
                 playsInline

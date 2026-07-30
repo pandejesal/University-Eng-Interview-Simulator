@@ -16,6 +16,7 @@ export default function DeviceCheckScreen({ mode, onProceed, onBack }: DeviceChe
 
   useEffect(() => {
     let animId: number;
+    let audioCtx: AudioContext | null = null;
     navigator.mediaDevices.getUserMedia({ video: true, audio: true })
       .then((stream) => {
         streamRef.current = stream;
@@ -25,7 +26,7 @@ export default function DeviceCheckScreen({ mode, onProceed, onBack }: DeviceChe
         }
         setPermissionGranted(true);
 
-        const audioCtx = new AudioContext();
+        audioCtx = new AudioContext();
         const src = audioCtx.createMediaStreamSource(stream);
         const analyser = audioCtx.createAnalyser();
         analyser.fftSize = 256;
@@ -46,6 +47,7 @@ export default function DeviceCheckScreen({ mode, onProceed, onBack }: DeviceChe
 
     return () => {
       cancelAnimationFrame(animId);
+      if (audioCtx) audioCtx.close();
       if (streamRef.current) {
         streamRef.current.getTracks().forEach(t => t.stop());
         streamRef.current = null;

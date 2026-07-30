@@ -6,10 +6,11 @@ A browser-based interview simulator for University of Waterloo Engineering and U
 
 ## Features
 
-**126 Interview Questions**
+**133 Interview Questions**
 - 93 general practice questions across behavioral, problem-solving, and personal engineering categories
 - 13 University of Waterloo Engineering–specific questions with exact Kira timings (30s prep / 90s response)
 - 20 University of Toronto Engineering–specific questions with official OSP timings (varies by question)
+- 7 University of British Columbia Personal Profile written prompts (for essay structure practice)
 - All questions tagged by university and priority (core vs. supplementary)
 
 **Kira-Accurate Timings** — Each question carries its own `prepTime` and `responseTime` in seconds, matching the real platform's limits.
@@ -20,7 +21,7 @@ A browser-based interview simulator for University of Waterloo Engineering and U
 
 **Device Check Screen** — Before starting, a screen verifies camera and microphone with a live feed and mic level indicator bars.
 
-**University Filter** — Practice only your target school's questions (Waterloo, UofT, or all).
+**University Filter** — Practice only your target school's questions (Waterloo, UofT, UBC, or all).
 
 **Core / All Toggle** — Narrow to the most frequently asked ("high priority") questions for each school, or see everything.
 
@@ -44,10 +45,13 @@ A browser-based interview simulator for University of Waterloo Engineering and U
 
 **Copy All Prompts** — Copy grading prompts for all questions in a session at once for batch evaluation.
 
+> **⚠ UBC Personal Profile Plagiarism Warning:** UBC Engineering does NOT use video interviews. The UBC questions in this app are written Personal Profile prompts for practising essay structure and ideas only. AI-generated sample responses are for REFERENCE — do NOT copy them into your actual application. UBC reviews all Personal Profiles for authenticity. Submitting plagiarised content can result in immediate rejection or blacklisting.
+
 ## Question Sources
 
 - **Waterloo Engineering:** Official AIF questions, Engineering Video Interview prompt, Systems Design Engineering interview question, Software Engineering programming question
 - **UofT Engineering:** Official OSP Personal Profile written and video questions (confirmed from discover.engineering.utoronto.ca and student reports)
+- **UBC Engineering:** Official Personal Profile written prompts (applicable to ALL UBC programs including Engineering). UBC Engineering does NOT have a video interview component — these are for practising written essay structure only.
 - **General:** Common engineering interview questions across all categories
 
 ## Setup
@@ -68,7 +72,7 @@ npm run preview
 
 ## Usage
 
-1. **Select target university** — All Universities, University of Waterloo, or University of Toronto
+1. **Select target university** — All Universities, University of Waterloo, University of Toronto, or UBC (Written Profile)
 2. **Choose priority** — Core Questions (most likely to be asked at your selected school) or All Questions
 3. **Pick categories** — Behavioral (teamwork & ethics), Problem Solving (Fermi estimates, logic puzzles), Personal Engineering (motivations & experience)
 4. **Choose mode** — Simulation (timed with auto-stop) or Practice (untimed)
