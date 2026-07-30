@@ -2,7 +2,7 @@
 
 A browser-based interview simulator for University of Waterloo Engineering and University of Toronto Engineering applicants. Record video responses to real admissions interview questions, review your performance, and generate grading prompts for AI analysis.
 
-**No external API calls.** Everything runs client-side. You download your recordings and optionally paste them + the grading prompt into Google AI Studio (Gemini) for evaluation.
+**No external API calls.** Everything runs client-side. You download your recordings and optionally paste them + the grading prompt into any AI model (Gemini, Claude, ChatGPT, etc.) for evaluation.
 
 ## Features
 
@@ -14,7 +14,7 @@ A browser-based interview simulator for University of Waterloo Engineering and U
 - **Filler word counter** — detects "um", "uh", "like", etc.
 - **WPM calculator** — tracks your speaking pace
 - **Session history** — stored in localStorage
-- **Grading prompt** — generates a structured prompt for Gemini with weighted scoring rubrics
+- **Grading prompt** — generates a structured evaluation prompt with weighted scoring rubrics (works with any AI)
 - **Video download** — save recordings as .webm files
 
 ## Question Sources
@@ -47,7 +47,27 @@ npm run preview
 4. Select Simulation (timed) or Practice (untimed) mode
 5. Record your video response — camera and microphone access required
 6. Review metrics (WPM, filler words) and watch your recording
-7. **Copy the Grading Prompt →** paste into Google AI Studio (Gemini) with your video for evaluation
+7. **Copy the Grading Prompt** and paste it alongside your video into any AI that accepts file + text prompts (Gemini, Claude, ChatGPT, etc.)
+
+## Grading Prompt
+
+The generated prompt turns any AI into a ruthless admissions evaluator. It includes:
+
+- **University-specific context** — adapts to Waterloo or UofT depending on your selection
+- **Reference data** — the question asked, your transcript, WPM, and filler word count
+- **Category-specific rubric** — tailored criteria for behavioral (STAR method), problem-solving (logical reasoning), or personal engineering (technical depth)
+- **6 scoring dimensions** (each 1-10 with weighted importance based on category):
+  1. Substance & Content
+  2. Structure & Logic
+  3. Relevance
+  4. Engineering Alignment
+  5. Delivery & Clarity (video-assessed)
+  6. Confidence & Poise (video-assessed)
+- **Fluff & jargon penalty** — flags clichés like "think outside the box", "leverage", "synergy"
+- **Video observation checklist** — pace, eye contact, body language, vocal tone
+- **Structured output format** — parses into Overall Score, Dimension Scores, STAR/Logical/Tech Breakdown, Delivery Notes, Fluff Flagged, Brutal Improvement Points, and What Worked
+
+Works with any multimodal AI that can ingest video files: Gemini (Google AI Studio), Claude, ChatGPT, or any future model.
 
 ## Tech Stack
 
