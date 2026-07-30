@@ -80,23 +80,123 @@ npm run preview
 
 ## Grading Prompt
 
-The generated prompt turns any AI into a ruthless admissions evaluator with:
+When you click **Copy Grading Prompt**, the app generates the exact text below (with your question, transcript, and metrics filled in). Paste it alongside your video into any multimodal AI (Gemini, Claude, ChatGPT, etc.):
 
-- **University-specific context** — adapts to Waterloo or UofT admissions officer persona
-- **Reference data** — the exact question asked, your transcript, WPM, filler words, and actual recording duration
-- **Category-specific rubric** — behavioral (STAR method), problem-solving (logical reasoning), or personal engineering (technical depth)
-- **6 scoring dimensions** (1–10, weighted per category):
-  1. Substance & Content
-  2. Structure & Logic
-  3. Relevance
-  4. Engineering Alignment
-  5. Delivery & Clarity (video-assessed)
-  6. Confidence & Poise (video-assessed)
-- **Fluff & jargon penalty** — flags clichés like "think outside the box", "leverage", "synergy"
-- **Video observation checklist** — pace, eye contact, body language, vocal tone
-- **Structured output format** — Overall Score, Dimension Scores, STAR/Logical/Tech Breakdown, Delivery Notes, Fluff Flagged, Brutal Improvement Points, What Worked
+```
+You are [ruthless Waterloo/UofT/Waterloo+UofT Engineering Admissions Officer] evaluating a video interview response. Watch the video carefully — do NOT rely solely on the transcript below.
 
-Works with any multimodal AI: Gemini (Google AI Studio), Claude, ChatGPT, etc.
+══════════════════════════════════════════════════════
+                    TASK
+══════════════════════════════════════════════════════
+
+You have TWO inputs:
+  1. A VIDEO file of the candidate answering an interview question
+  2. A Web Speech API transcript of their speech (below)
+
+Your job is to:
+  - WATCH the video to assess delivery, body language, tone, confidence, and pacing
+  - LISTEN to the video audio to catch what the transcript may have missed
+  - USE the transcript as a REFERENCE (it may be incomplete for engineering terms)
+  - SCORE the response across 6 dimensions using the strict rubric below
+  - FLAG specific weaknesses with brutal honesty — no sugarcoating
+  - OUTPUT your evaluation in the exact structured format specified
+
+══════════════════════════════════════════════════════
+                  REFERENCE DATA
+══════════════════════════════════════════════════════
+
+Category: Behavioral / Problem Solving / Personal Engineering
+Focus Area: [focus tag]
+Actual Recording Duration: [MM:SS]
+
+Question Asked:
+"""
+[the exact question]
+"""
+
+Web Speech Transcript:
+"""
+[your transcript]
+"""
+
+Client-Side Metrics:
+  - Words spoken: [count]
+  - Speaking pace: [WPM]
+  - Filler words detected: [count]
+  - Target WPM for engineering interviews: 140-170
+
+══════════════════════════════════════════════════════
+              CATEGORY-SPECIFIC RUBRIC
+══════════════════════════════════════════════════════
+
+Behavioral → STAR Method (Situation, Task, Action, Result)
+Problem Solving → Logical reasoning, assumptions, step-by-step
+Personal Engineering → Technical depth, hands-on experience
+
+══════════════════════════════════════════════════════
+          SCORING DIMENSIONS (1-10 scale)
+══════════════════════════════════════════════════════
+
+1. SUBSTANCE & CONTENT   — Real substance or fluff?
+2. STRUCTURE & LOGIC     — Clear organization? STAR? Logical chain?
+3. RELEVANCE             — Directly answers the question?
+4. ENGINEERING ALIGNMENT — Engineering thinking? Technical terms?
+5. DELIVERY & CLARITY    — Assessed FROM VIDEO. Pace, mumbling, filler words
+6. CONFIDENCE & POISE    — Assessed FROM VIDEO. Eye contact, posture, fidgeting
+
+Each dimension has weighted importance that shifts per category (e.g. Structure & Logic is 2x for problem-solving, Engineering Alignment is 2x for personal engineering).
+
+══════════════════════════════════════════════════════
+                FLUFF & JARGON PENALTY
+══════════════════════════════════════════════════════
+
+Penalized terms: "think outside the box", "synergy", "leverage", "circle back",
+"paradigm shift", "deep dive", "moving forward", "at the end of the day",
+"it is what it is", "touch base", "I'm passionate about", "game changer",
+"bleeding edge", "rockstar", "ninja"
+
+Also penalizes: copy-pasted personal statement sentences, namedropping
+without substance.
+
+══════════════════════════════════════════════════════
+           EXACT OUTPUT FORMAT
+══════════════════════════════════════════════════════
+
+=== OVERALL ===
+Overall Score: X/10
+Summary: (1-2 sentences)
+
+=== DIMENSION SCORES ===
+1. Substance & Content: X/10 — (justification)
+2. Structure & Logic: X/10 — (justification)
+3. Relevance: X/10 — (justification)
+4. Engineering Alignment: X/10 — (justification)
+5. Delivery & Clarity: X/10 — (video observation)
+6. Confidence & Poise: X/10 — (video observation)
+
+=== CATEGORY ANALYSIS ===
+[STAR Breakdown / Logical Reasoning Breakdown / Technical Depth Breakdown]
+
+=== DELIVERY NOTES (from video) ===
+- Pace: [assess]
+- Eye Contact: [assess]
+- Body Language: [assess]
+- Vocal Tone: [assess]
+- Key Observation: [most notable thing]
+
+=== FLUFF FLAGGED ===
+[List each cliché or "None detected"]
+
+=== 3 BRUTAL IMPROVEMENT POINTS ===
+1. [specific critique]
+2. [specific critique]
+3. [specific critique]
+
+=== WHAT WORKED ===
+[1-2 sentences on what to continue doing]
+```
+
+The prompt adapts to your selections: Waterloo questions get a Waterloo Engineering Admissions Officer persona, UofT questions get a UofT one, and general questions get both. The rubric, dimension weights, and output section all shift based on question category (behavioral / problem-solving / personal engineering). The recording duration is included so the AI can properly evaluate speaking pace.
 
 ## Tech Stack
 
