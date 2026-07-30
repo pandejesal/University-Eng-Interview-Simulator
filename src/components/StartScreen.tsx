@@ -54,10 +54,10 @@ export default function StartScreen({ questionsData, onStart }: StartScreenProps
   const isUniversitySelected = university !== 'all';
 
   return (
-    <div className="min-h-screen bg-white flex flex-col items-center justify-center p-8">
+    <div className="min-h-screen bg-white flex flex-col items-center justify-center p-4 sm:p-8 animate-fadeIn">
       <div className="max-w-2xl w-full">
-        <div className="text-center mb-12">
-          <h1 className="text-4xl font-light tracking-tight text-gray-900 mb-3">
+        <div className="text-center mb-8 sm:mb-12">
+          <h1 className="text-2xl sm:text-4xl font-light tracking-tight text-gray-900 mb-3">
             Kira Talent Interview Simulator
           </h1>
           <p className="text-gray-500 text-sm uppercase tracking-widest">

@@ -1,6 +1,7 @@
 import { useState, useCallback } from 'react';
 import type { Screen, Question, QuestionCategory, QuestionsData, InterviewMode, University, SessionResult } from './types';
 import StartScreen from './components/StartScreen';
+import DeviceCheckScreen from './components/DeviceCheckScreen';
 import RecordingModule from './components/RecordingModule';
 import EvaluationScreen from './components/EvaluationScreen';
 import SessionSummary from './components/SessionSummary';
@@ -51,6 +52,10 @@ export default function App() {
     setCurrentQuestionIndex(0);
     setResults([]);
     setEvalPhase('question');
+    setScreen('device_check');
+  }, []);
+
+  const handleDeviceReady = useCallback(() => {
     setScreen('recording');
   }, []);
 
@@ -88,10 +93,18 @@ export default function App() {
     setScreen('start');
   }, []);
 
-  const recordingDuration = 60;
-
   if (screen === 'start') {
     return <StartScreen questionsData={questionsData} onStart={handleStart} />;
+  }
+
+  if (screen === 'device_check') {
+    return (
+      <DeviceCheckScreen
+        mode={mode}
+        onProceed={handleDeviceReady}
+        onBack={() => setScreen('start')}
+      />
+    );
   }
 
   if (screen === 'recording' && sessionQuestions[currentQuestionIndex]) {
@@ -132,7 +145,7 @@ export default function App() {
         category={qwc.category}
         recordedBlob={result.blob}
         transcript={result.transcript}
-        recordingDuration={recordingDuration}
+        recordingDuration={qwc.question.responseTime}
         questionIndex={currentQuestionIndex}
         totalQuestions={sessionQuestions.length}
         onDownloadAll={() => {

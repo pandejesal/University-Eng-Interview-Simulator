@@ -76,8 +76,8 @@ export default function EvaluationScreen({
   };
 
   return (
-    <div className="min-h-screen bg-white flex flex-col">
-      <div className="px-6 py-3 border-b border-gray-200 bg-gray-50 flex items-center justify-between">
+    <div className="min-h-screen bg-white flex flex-col animate-fadeIn">
+      <div className="px-4 sm:px-6 py-3 border-b border-gray-200 bg-gray-50 flex items-center justify-between">
         <h1 className="text-xs uppercase tracking-[0.2em] text-gray-500">
           Question {questionIndex + 1} of {totalQuestions}
         </h1>
@@ -86,9 +86,9 @@ export default function EvaluationScreen({
         </span>
       </div>
 
-      <div className="flex-1 flex flex-col items-center p-8">
+      <div className="flex-1 flex flex-col items-center p-4 sm:p-8">
         <div className="max-w-2xl w-full space-y-6">
-
+        
           {/* Question recap */}
           <div>
             <p className="text-xs uppercase tracking-[0.2em] text-gray-400 mb-2">
@@ -100,7 +100,7 @@ export default function EvaluationScreen({
           </div>
 
           {/* Metrics row */}
-          <div className="grid grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
             <div className="border border-gray-200 p-4 text-center">
               <p className="text-2xl font-mono text-gray-900">{wpm}</p>
               <p className="text-xs text-gray-400 uppercase tracking-wider mt-1">

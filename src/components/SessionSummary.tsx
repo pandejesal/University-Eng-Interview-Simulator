@@ -23,7 +23,7 @@ export default function SessionSummary({ results, mode, onRestart }: SessionSumm
         category: r.category,
         transcript: r.transcript,
         fillerWords: countFillerWords(r.transcript),
-        wpm: calculateWPM(r.transcript, 60),
+        wpm: calculateWPM(r.transcript, r.question.responseTime),
       })),
     };
     try {
@@ -46,7 +46,7 @@ export default function SessionSummary({ results, mode, onRestart }: SessionSumm
         focus: r.question.focus,
         category: r.category,
         transcript: r.transcript,
-        recordingDuration: 60,
+        recordingDuration: r.question.responseTime,
         university: r.question.university,
       });
       return `══════════════════════════════════════════\nQUESTION ${i + 1}\n══════════════════════════════════════════\n\n${prompt}`;
@@ -64,7 +64,7 @@ export default function SessionSummary({ results, mode, onRestart }: SessionSumm
       focus: r.question.focus,
       category: r.category,
       transcript: r.transcript,
-      recordingDuration: 60,
+      recordingDuration: r.question.responseTime,
       university: r.question.university,
     });
     navigator.clipboard.writeText(text).then(() => {
@@ -74,15 +74,15 @@ export default function SessionSummary({ results, mode, onRestart }: SessionSumm
   };
 
   return (
-    <div className="min-h-screen bg-white flex flex-col">
-      <div className="px-6 py-3 border-b border-gray-200 bg-gray-50">
+    <div className="min-h-screen bg-white flex flex-col animate-fadeIn">
+      <div className="px-4 sm:px-6 py-3 border-b border-gray-200 bg-gray-50">
         <h1 className="text-xs uppercase tracking-[0.2em] text-gray-500">
           Session Summary
         </h1>
       </div>
 
-      <div className="flex-1 flex flex-col items-center p-8">
-        <div className="max-w-2xl w-full space-y-8">
+      <div className="flex-1 flex flex-col items-center p-4 sm:p-8">
+        <div className="max-w-2xl w-full space-y-6 sm:space-y-8">
 
           {/* Header stats */}
           <div className="text-center">
@@ -94,7 +94,7 @@ export default function SessionSummary({ results, mode, onRestart }: SessionSumm
             </p>
           </div>
 
-          <div className="grid grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
             <div className="border border-gray-200 p-4 text-center">
               <p className="text-2xl font-mono text-gray-900">{avgWpm}</p>
               <p className="text-xs text-gray-400 uppercase tracking-wider mt-1">Avg WPM</p>
@@ -117,7 +117,7 @@ export default function SessionSummary({ results, mode, onRestart }: SessionSumm
             <div className="space-y-4">
               {results.map((r, i) => {
                 const fw = countFillerWords(r.transcript);
-                const w = calculateWPM(r.transcript, 60);
+                const w = calculateWPM(r.transcript, r.question.responseTime);
                 return (
                   <div key={i} className="border border-gray-200 p-4">
                     <div className="flex items-start justify-between mb-2">

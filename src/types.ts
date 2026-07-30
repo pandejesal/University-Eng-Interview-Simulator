@@ -5,7 +5,8 @@ export type Priority = 'high' | 'low';
 export interface Question {
   question: string;
   focus: string;
-  time: string;
+  prepTime: number;
+  responseTime: number;
   university?: University;
   priority?: Priority;
 }
@@ -18,7 +19,7 @@ export interface QuestionsData {
 
 export type QuestionCategory = keyof QuestionsData;
 
-export type Screen = 'start' | 'recording' | 'evaluation';
+export type Screen = 'start' | 'device_check' | 'recording' | 'evaluation';
 
 export type InterviewMode = 'practice' | 'simulation';
 
