@@ -52,10 +52,16 @@ A browser-based interview and Personal Profile simulator for University of Water
 ## Setup & Running Locally
 
 ```bash
-# Install dependencies
+# 1. Clone the repository
+git clone https://github.com/pandejesal/Univeristy-Eng-Interview-Simulator.git
+
+# 2. Navigate into the project directory
+cd Univeristy-Eng-Interview-Simulator
+
+# 3. Install dependencies
 npm install
 
-# Start development server
+# 4. Start development server
 npm run dev
 ```
 
