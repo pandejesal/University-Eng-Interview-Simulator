@@ -27,26 +27,25 @@ A browser-based interview and Personal Profile simulator for University of Water
 
 ---
 
-## How to Use
+## Step-by-Step Usage Guide
 
 ### 🎥 Video Interviews (Waterloo / UofT / General)
-1. **Target University** — Select *All Universities*, *University of Waterloo*, or *University of Toronto* from the target university bar.
-2. **Question Priority** — Choose between *Core Questions* (high frequency) or *All Questions*.
-3. **Categories** — Check the question categories you want to practice.
-4. **Interview Mode** — Select *Simulation* (strict timed) or *Practice* (untimed).
-5. **Start Session** — Click **Start Simulation/Practice Session**.
-6. **Device Check** — Allow camera and microphone access, verify the live video feed and mic bars, then click **Proceed to Interview**.
-7. **Answer Questions** — Read the prompt during prep time, record your response (the prompt will hide once recording starts), and review each answer on the evaluation screen.
-8. **Get Graded** — Copy the grading prompt and paste it alongside your `.webm` video into any multimodal AI (Gemini, Claude, ChatGPT, etc.).
+1. **Target University**: Under *Target University*, select **All Universities**, **University of Waterloo**, or **University of Toronto**.
+2. **Question Priority**: Select **Core Questions** (high-frequency) or **All Questions**.
+3. **Question Categories**: Check or uncheck **Behavioral**, **Problem Solving**, or **Personal Engineering**. You can also click category cards to preview questions.
+4. **Interview Mode**: Select **Simulation** (timed prep + timed auto-stop recording) or **Practice** (untimed).
+5. **Start**: Click **Start Simulation Session** (or **Start Practice Session**).
+6. **Device Check**: Allow browser access to your camera and microphone. Verify your live video feed and microphone level bars, then click **Proceed to Interview**.
+7. **Recording**: Read the question during the prep countdown. Once recording starts, the question hides (Kira Talent style). Speak clearly into your mic.
+8. **Evaluation & Grading**: After finishing your questions, review your session summary, download your `.webm` video recordings, and click **Copy Grading Prompt** to paste into any AI (Gemini, Claude, ChatGPT, etc.) alongside your video.
 
 ### ✍️ Written Practice (UBC Personal Profile)
-1. **Select UBC** — Scroll down to the *Personal Profile Practice* section and click **UBC (Personal Profile)**. This automatically switches to writing mode.
-2. **Select Questions** — Check the specific UBC questions you want to practice or click **Select All**.
-3. **Start Writing** — Click **Start Writing Practice**.
-4. **Write Response** — Type your response in the textarea (up to 2,100 characters). Ensure your response is authentic and personal.
-5. **Submit & Evaluate** — Click **Submit Response** to view your evaluation screen.
-6. **Get Coaching** — Copy the grading prompt and paste it into any AI. The prompt acts as a **coach/mentor** that critiques your writing across UBC's 4 criteria (Engagement & Accomplishment, Structure, Substance, Voice & Authenticity) and gives you **actionable advice on what to improve** without rewriting it for you.
-7. **Revise** — Use the feedback to improve your own essay. *(Do not use AI to write or rewrite your profile — UBC actively uses AI detectors).*
+1. **Select UBC**: Scroll down to *Personal Profile Practice* and click **UBC (Personal Profile)**. (This automatically selects writing mode).
+2. **Select Questions**: Check/uncheck the specific UBC questions you want to practice, or click **Select All / Deselect All**.
+3. **Start**: Click **Start Writing Practice**.
+4. **Write Response**: Type your response in the textarea (up to 2,100 characters). The character and word counters update in real time.
+5. **Submit**: Click **Submit Response** when finished.
+6. **Coaching & Grading**: Review your written response and click **Copy Grading Prompt**. Paste it into any AI to receive mentor/coach-style feedback on your writing (covering Engagement & Accomplishment, Structure, Substance, Voice & Authenticity, plus concrete tips on how to improve). *(Note: Do not use AI to write or rewrite your profile — UBC actively uses AI detectors).*
 
 ---
 
