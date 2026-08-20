@@ -9,7 +9,7 @@ A browser-based interview and Personal Profile simulator for University of Water
 ## Features
 
 ### Video Interviews (Waterloo, UofT, General)
-- **127 Interview Questions** across behavioral, problem-solving, and personal engineering categories.
+- **150 Interview Questions** across behavioral, problem-solving, and personal engineering categories.
 - **Kira-Accurate Timings** — Individual prep and response times per question.
 - **Simulation Mode** — Timed prep + recording with auto-stop, countdowns, double beep start / single beep end, and camera preview.
 - **Practice Mode** — Untimed recording at your own pace.
@@ -53,7 +53,7 @@ A browser-based interview and Personal Profile simulator for University of Water
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/pandejesal/Univeristy-Eng-Interview-Simulator.git
+git clone https://github.com/pandejesal/University-Eng-Interview-Simulator.git
 
 # 2. Navigate into the project directory
 cd Univeristy-Eng-Interview-Simulator
