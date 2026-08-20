@@ -1,5 +1,5 @@
 import { useState, useCallback } from 'react';
-import type { Screen, Question, QuestionCategory, QuestionsData, InterviewMode, University, SessionResult } from './types';
+import type { Screen, Question, QuestionCategory, InterviewMode, University, SessionResult } from './types';
 import StartScreen from './components/StartScreen';
 import DeviceCheckScreen from './components/DeviceCheckScreen';
 import RecordingModule from './components/RecordingModule';
@@ -7,6 +7,9 @@ import WritingModule from './components/WritingModule';
 import EvaluationScreen from './components/EvaluationScreen';
 import SessionSummary from './components/SessionSummary';
 import questionsData from './data/questions.json';
+import type { QuestionsData } from './types';
+
+const questionBank: QuestionsData = questionsData as unknown as QuestionsData;
 
 interface QuestionWithCategory {
   question: Question;
@@ -41,7 +44,7 @@ export default function App() {
     } else {
       pool = [];
       for (const cat of categories) {
-        const qs = questionsData[cat];
+        const qs = questionBank[cat];
         if (qs) {
           for (const q of qs) {
             if (university && q.university && q.university !== university) continue;
@@ -100,7 +103,7 @@ export default function App() {
   }, []);
 
   if (screen === 'start') {
-    return <StartScreen questionsData={questionsData} onStart={handleStart} />;
+    return <StartScreen questionsData={questionBank} onStart={handleStart} />;
   }
 
   if (screen === 'device_check' && mode !== 'writing') {

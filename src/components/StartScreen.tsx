@@ -1,5 +1,5 @@
 import { useState, useMemo, useEffect } from 'react';
-import type { Question, QuestionCategory, QuestionsData, InterviewMode, University, Priority } from '../types';
+import type { Question, QuestionCategory, QuestionsData, InterviewMode, University } from '../types';
 import SessionHistory from './SessionHistory';
 
 interface StartScreenProps {
