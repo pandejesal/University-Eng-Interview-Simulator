@@ -9,7 +9,7 @@ A browser-based interview and Personal Profile simulator for University of Water
 ## Features
 
 ### Video Interviews (Waterloo, UofT, General)
-- **150 Interview Questions** across behavioral, problem-solving, and personal engineering categories.
+- **150 Practice Questions** across behavioral, problem-solving, and personal engineering categories — practice bank only, **not verbatim leaked Kira questions** (see provenance below).
 - **Kira-Accurate Timings** — Individual prep and response times per question.
 - **Simulation Mode** — Timed prep + recording with auto-stop, countdowns, double beep start / single beep end, and camera preview.
 - **Practice Mode** — Untimed recording at your own pace.
@@ -81,6 +81,25 @@ npm run preview
 - **Tailwind CSS v4**
 - **Web Speech API** (live transcription)
 - **MediaRecorder API** (video recording)
+
+---
+
+## Question Provenance — Read Before You Practice
+
+**Only 1 question in the bank is an official verbatim Kira question.** UofT and Waterloo both operate under a strict Kira Talent NDA that prohibits sharing verbatim questions — no applicant-verified 2025/26 Kira transcript exists in the public archive (pullpush.io search 2026-08-20 returned zero hits). Anyone selling "150 leaked Kira questions" is misrepresenting.
+
+Breakdown of the 150 practice questions (`src/data/questions.json` — each entry tags `tier` / `source` / `verified_kira`):
+
+| Tier | Meaning | Count | Example |
+|---|---|---|---|
+| `official_kira` | **Verified verbatim Kira** — exact wording from the university | **1** | `behavioral #37` — *"What experience(s) inside or outside of the classroom motivated you to apply to your chosen engineering program?"* — Waterloo Engineering graded video (30s prep / 90s) — `uwaterloo.ca/engineering/future-students/applying/online-interviews` (2026-07-08) |
+| `written_app` | **Real written-application prompt** repurposed for video drills — from AIF / UofT Online Student Profile / UBC Personal Profile (also the `Writing Mode` questions) | 29 | `behavioral #45` — UofT MyLS *"perseverance, motivation and self-confidence"* (official MyLS 10min/300w written + 2min/2min + 3min video family, `2026-06-04`) |
+| `prep_report` | **Reported archetype / third-party practice** — Youthfully (2024), Quizlet, Narwal, DreamOffer, GrantMe (2024), Karan Gupta (2026), Reddit `r/UofT` — paraphrased, never applicant-verified; style-drill only | 20 | `problem_solving #36` — *"3-step elementary schools in 5M city"* (Fermi F4-family, `Youthfully/Quizlet/Narwal` `prep/old`) |
+| `synthetic` | **Generic style-matched templates** added to cover timing/behavioral/Fermi families where no verified source exists | 100 | `behavioral #00` — *"project failed, what did you learn?"* |
+
+*Use the `tier` badge in practice: drill `official_kira` for the exact Waterloo opener, `prep_report` for the UofT Fermi style (expect different numbers on exam day), `synthetic` for general fluency.*
+
+Detailed bank documentation: [university-applications/essay-material/drafts/kira-question-bank.md](../university-applications/essay-material/drafts/kira-question-bank.md).
 
 ---
 
