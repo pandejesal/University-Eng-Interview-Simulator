@@ -9,7 +9,7 @@ A browser-based interview and Personal Profile simulator for University of Water
 ## Features
 
 ### Video Interviews (Waterloo, UofT, General)
-- **148 Practice Questions** (Waterloo Pass 1 audit 2026-08-23; was 150) across behavioral, problem-solving, and personal engineering categories — practice bank only, **not verbatim leaked Kira questions** (see provenance below).
+- **143 Practice Questions** (Pass 2 audit 2026-08-23; was 150 → 148 Pass1) across behavioral, problem-solving, and personal engineering categories — practice bank only, **not verbatim leaked Kira questions** (see provenance below).
 - **Kira-Accurate Timings** — Individual prep and response times per question.
 - **Simulation Mode** — Timed prep + recording with auto-stop, countdowns, double beep start / single beep end, and camera preview.
 - **Practice Mode** — Untimed recording at your own pace.
@@ -88,14 +88,14 @@ npm run preview
 
 **Only 2 questions in the bank are official verbatim Kira questions** (Waterloo Engineering + Waterloo SYDE/Kish Hahn — see `WATERLOO-AUDIT-PASS1.md`). UofT and Waterloo both operate under a strict Kira Talent NDA that prohibits sharing verbatim questions — no applicant-verified 2025/26 UofT Kira transcript exists in the public archive (pullpush.io search 2026-08-20 returned zero hits). Anyone selling "150 leaked Kira questions" is misrepresenting.
 
-Breakdown of the 148 practice questions after Waterloo Pass 1 (`src/data/questions.json` — each entry tags `tier` / `source` / `verified_kira`):
+Breakdown of the 143 practice questions after Pass 2 (`src/data/questions.json` — each entry tags `tier` / `source` / `verified_kira`):
 
 | Tier | Meaning | Count | Example |
 |---|---|---|---|
 | `official_kira` | **Verified verbatim Kira** — exact wording from the university | **2** | `behavioral #37` — *"What experience(s) inside or outside of the classroom motivated you to apply to your chosen engineering program?"* — Waterloo Engineering graded video (30s prep / 90s) — `uwaterloo.ca/engineering/future-students/applying/online-interviews` (2026-07-08); **+ `problem_solving #33` — *"Describe how you designed and implemented a system, activity or thing in your personal, academic or work life."* — Waterloo SYDE/Kish Hahn graded video (same official page) — upgraded 2026-08-23 from `prep_report` |
 | `written_app` | **Real written-application prompt** repurposed for video drills — from AIF / UofT Online Student Profile / UBC Personal Profile (also the `Writing Mode` questions) | 29 | `behavioral #45` — UofT MyLS *"perseverance, motivation and self-confidence"* (official MyLS 10min/300w written + 2min/2min + 3min video family, `2026-06-04`) |
 | `prep_report` | **Reported archetype / third-party practice** — Youthfully (2024), Quizlet, Narwal, DreamOffer, GrantMe (2024), Karan Gupta (2026), Reddit `r/UofT` — paraphrased, never applicant-verified; style-drill only | 19 | `problem_solving #36` — *"3-step elementary schools in 5M city"* (Fermi F4-family, `Youthfully/Quizlet/Narwal` `prep/old`) — was 20, minus 1 SYDE upgraded to `official_kira` |
-| `synthetic` | **Generic style-matched templates** added to cover timing/behavioral/Fermi families where no verified source exists | 98 | `behavioral #00` — *"project failed, what did you learn?"* — was 100, minus 2 Waterloo Fermi hallucinations deleted in Pass 1 (`solar panel angle` + `UW campus energy`) |
+| `synthetic` | **Generic style-matched templates** added to cover timing/behavioral/Fermi families where no verified source exists | 93 | `behavioral #00` — *"project failed, what did you learn?"* — was 100, minus 2 Waterloo Fermi hallucinations deleted in Pass 1 (`solar panel angle` + `UW campus energy`) and 5 classic logic puzzles deleted in Pass 2 (`25 horses` + `10 bags coins` + `apple/orange boxes` + `2 ropes 60min` + `3 switches bulbs`) |
 
 *Use the `tier` badge in practice: drill `official_kira` for the exact Waterloo opener, `prep_report` for the UofT Fermi style (expect different numbers on exam day), `synthetic` for general fluency.*
 

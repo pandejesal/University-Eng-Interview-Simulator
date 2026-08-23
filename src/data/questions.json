@@ -643,28 +643,8 @@
       "verified_kira": false
     },
     {
-      "question": "You have two ropes that each take exactly 60 minutes to burn, but they burn at uneven rates. How do you measure 45 minutes?",
-      "focus": "logic puzzles",
-      "prepTime": 30,
-      "responseTime": 150,
-      "tier": "synthetic",
-      "source": "generic Fermi/puzzle/design synthetic — style-matched to UofT 3-min video Fermi family, not verbatim",
-      "kind": "kira_style_practice",
-      "verified_kira": false
-    },
-    {
       "question": "Estimate the total mass of all the vehicles crossing the Ambassador Bridge in a single day.",
       "focus": "Fermi estimation problems",
-      "prepTime": 30,
-      "responseTime": 150,
-      "tier": "synthetic",
-      "source": "generic Fermi/puzzle/design synthetic — style-matched to UofT 3-min video Fermi family, not verbatim",
-      "kind": "kira_style_practice",
-      "verified_kira": false
-    },
-    {
-      "question": "You are in a room with 3 switches, each controlling one of 3 lightbulbs in an adjacent room. You can only enter the adjacent room once. How do you match the switches to the bulbs?",
-      "focus": "logic puzzles",
       "prepTime": 30,
       "responseTime": 150,
       "tier": "synthetic",
@@ -705,16 +685,6 @@
     {
       "question": "How would you design an experiment to test the efficiency of a new regenerative braking system?",
       "focus": "experimental design",
-      "prepTime": 30,
-      "responseTime": 150,
-      "tier": "synthetic",
-      "source": "generic Fermi/puzzle/design synthetic — style-matched to UofT 3-min video Fermi family, not verbatim",
-      "kind": "kira_style_practice",
-      "verified_kira": false
-    },
-    {
-      "question": "You have 25 horses and a 5-lane track. What is the minimum number of races needed to find the 3 fastest horses without a stopwatch?",
-      "focus": "logic puzzles",
       "prepTime": 30,
       "responseTime": 150,
       "tier": "synthetic",
@@ -773,16 +743,6 @@
       "verified_kira": false
     },
     {
-      "question": "You have 10 bags of coins. One bag contains counterfeit coins that weigh 9 grams each, while genuine coins weigh 10 grams. You have a digital scale and can only take one reading. How do you find the counterfeit bag?",
-      "focus": "logic puzzles",
-      "prepTime": 30,
-      "responseTime": 150,
-      "tier": "synthetic",
-      "source": "generic Fermi/puzzle/design synthetic — style-matched to UofT 3-min video Fermi family, not verbatim",
-      "kind": "kira_style_practice",
-      "verified_kira": false
-    },
-    {
       "question": "How would you design a smart traffic light system to minimize congestion at a busy intersection?",
       "focus": "experimental design",
       "prepTime": 30,
@@ -795,16 +755,6 @@
     {
       "question": "Estimate the number of leaves on a mature maple tree in autumn.",
       "focus": "Fermi estimation problems",
-      "prepTime": 30,
-      "responseTime": 150,
-      "tier": "synthetic",
-      "source": "generic Fermi/puzzle/design synthetic — style-matched to UofT 3-min video Fermi family, not verbatim",
-      "kind": "kira_style_practice",
-      "verified_kira": false
-    },
-    {
-      "question": "There are 3 boxes: one with apples, one with oranges, and one with both. All are labeled incorrectly. By picking just one fruit from one box, how can you correctly label all boxes?",
-      "focus": "logic puzzles",
       "prepTime": 30,
       "responseTime": 150,
       "tier": "synthetic",
