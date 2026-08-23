@@ -653,18 +653,6 @@
       "verified_kira": false
     },
     {
-      "question": "How would you design an experiment to determine the optimal angle for solar panels in Waterloo during winter?",
-      "focus": "experimental design",
-      "university": "waterloo",
-      "priority": "low",
-      "prepTime": 30,
-      "responseTime": 90,
-      "tier": "synthetic",
-      "source": "generic Fermi/puzzle/design synthetic — style-matched to UofT 3-min video Fermi family, not verbatim",
-      "kind": "kira_style_practice",
-      "verified_kira": false
-    },
-    {
       "question": "Estimate the total mass of all the vehicles crossing the Ambassador Bridge in a single day.",
       "focus": "Fermi estimation problems",
       "prepTime": 30,
@@ -719,18 +707,6 @@
       "focus": "experimental design",
       "prepTime": 30,
       "responseTime": 150,
-      "tier": "synthetic",
-      "source": "generic Fermi/puzzle/design synthetic — style-matched to UofT 3-min video Fermi family, not verbatim",
-      "kind": "kira_style_practice",
-      "verified_kira": false
-    },
-    {
-      "question": "Estimate the total energy consumed by the University of Waterloo campus in one week.",
-      "focus": "Fermi estimation problems",
-      "university": "waterloo",
-      "priority": "low",
-      "prepTime": 30,
-      "responseTime": 90,
       "tier": "synthetic",
       "source": "generic Fermi/puzzle/design synthetic — style-matched to UofT 3-min video Fermi family, not verbatim",
       "kind": "kira_style_practice",
@@ -949,10 +925,10 @@
       "priority": "high",
       "prepTime": 30,
       "responseTime": 90,
-      "tier": "prep_report",
-      "source": "Prep archetype — design and implement a system (UofT W1-family — Youthfully/Quizlet)",
-      "kind": "practice_bank_report",
-      "verified_kira": false
+      "tier": "official_kira",
+      "source": "OFFICIAL Waterloo Systems Design Engineering Kira — graded video (30s prep / 90s): Describe how you designed and implemented a system, activity or thing in your personal, academic or work life. — uwaterloo.ca/engineering/future-students/applying/online-interviews (2026-07-08) — SECOND verified verbatim Kira question (SYDE/Kish Hahn), mislabeled prep_report in prior patch",
+      "kind": "kira_video_graded",
+      "verified_kira": true
     },
     {
       "question": "Describe a 3-step process you would use to determine how many elementary schools there are in a city of 5 million people. Explain your assumptions and reasoning at each step.",
@@ -1029,14 +1005,14 @@
   ],
   "personal_engineering": [
     {
-      "question": "Why are you specifically interested in the Mechatronics Engineering program at the University of Waterloo?",
-      "focus": "motivations",
+      "question": "Why are you specifically interested in Mechanical Engineering (with Mechatronics as your second choice) at the University of Waterloo? Discuss an experience that motivated this primary focus.",
+      "focus": "motivations — mechanical-primary",
       "university": "waterloo",
       "priority": "high",
       "prepTime": 30,
       "responseTime": 90,
       "tier": "synthetic",
-      "source": "generic personal-engineering template — synthetic Mechatronics/Aerospace interest prompts, not Waterloo/UofT Kira archive",
+      "source": "generic personal-engineering template — rewritten 2026-08-23 Waterloo Pass 1 to reflect MECHANICAL-PRIMARY (2026-08-20) — original Mechatronics wording was program-bias hallucination",
       "kind": "kira_style_practice",
       "verified_kira": false
     },
