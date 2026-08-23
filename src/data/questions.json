@@ -977,12 +977,12 @@
       "verified_kira": false
     },
     {
-      "question": "What are your long-term career goals in the aerospace industry?",
-      "focus": "career goals in aerospace",
+      "question": "What are your long-term career goals in mechanical engineering? How do thermofluids, manufacturing, or mechanical systems fit into those goals?",
+      "focus": "career goals in mechanical engineering",
       "prepTime": 30,
       "responseTime": 60,
       "tier": "synthetic",
-      "source": "generic personal-engineering template — synthetic Mechatronics/Aerospace interest prompts, not Waterloo/UofT Kira archive",
+      "source": "generic personal-engineering template — rewritten 2026-08-23 Pass 3 to reflect MECHANICAL-PRIMARY (2026-08-20) — original aerospace wording was program-bias hallucination; synthetic practice, not Waterloo/UofT Kira archive",
       "kind": "kira_style_practice",
       "verified_kira": false
     },
@@ -1007,12 +1007,12 @@
       "verified_kira": false
     },
     {
-      "question": "Where do you see the field of mechatronics heading in the next 10 years?",
-      "focus": "career goals in mechatronics",
+      "question": "Where do you see the field of mechanical engineering heading in the next 10 years, including intelligent mechanical systems and automation?",
+      "focus": "career goals in mechanical engineering — future of mechanical systems",
       "prepTime": 30,
       "responseTime": 60,
       "tier": "synthetic",
-      "source": "generic personal-engineering template — synthetic Mechatronics/Aerospace interest prompts, not Waterloo/UofT Kira archive",
+      "source": "generic personal-engineering template — rewritten 2026-08-23 Pass 3 MECHANICAL-PRIMARY — original mechatronics-only wording was program-bias; synthetic practice, not Waterloo/UofT Kira archive",
       "kind": "kira_style_practice",
       "verified_kira": false
     },
@@ -1039,12 +1039,12 @@
       "verified_kira": false
     },
     {
-      "question": "What specific area of aerospace engineering, such as propulsion or avionics, excites you the most?",
-      "focus": "career goals in aerospace",
+      "question": "What specific area of mechanical engineering, such as thermofluids, controls and robotics, or advanced manufacturing, excites you the most?",
+      "focus": "career goals in mechanical engineering — discipline focus",
       "prepTime": 30,
       "responseTime": 60,
       "tier": "synthetic",
-      "source": "generic personal-engineering template — synthetic Mechatronics/Aerospace interest prompts, not Waterloo/UofT Kira archive",
+      "source": "generic personal-engineering template — rewritten 2026-08-23 Pass 3 MECHANICAL-PRIMARY — original aerospace propulsion/avionics wording was program-bias; synthetic practice",
       "kind": "kira_style_practice",
       "verified_kira": false
     },
@@ -1070,7 +1070,7 @@
     },
     {
       "question": "How do you plan to leverage the co-op program at Waterloo to achieve your career goals?",
-      "focus": "career goals in mechatronics",
+      "focus": "co-op and career goals",
       "university": "waterloo",
       "priority": "high",
       "prepTime": 30,
@@ -1101,12 +1101,12 @@
       "verified_kira": false
     },
     {
-      "question": "What excites you most about the prospect of working in the space exploration sector?",
-      "focus": "career goals in aerospace",
+      "question": "What excites you most about working on mechanical systems for demanding environments, such as energy, transportation, or aerospace applications?",
+      "focus": "career goals in mechanical engineering — demanding environments",
       "prepTime": 30,
       "responseTime": 60,
       "tier": "synthetic",
-      "source": "generic personal-engineering template — synthetic Mechatronics/Aerospace interest prompts, not Waterloo/UofT Kira archive",
+      "source": "generic personal-engineering template — rewritten 2026-08-23 Pass 3 MECHANICAL-PRIMARY — original space exploration sector wording was aerospace bias; synthetic practice",
       "kind": "kira_style_practice",
       "verified_kira": false
     },
@@ -1131,22 +1131,22 @@
       "verified_kira": false
     },
     {
-      "question": "What impact do you hope to make in the field of robotics and automation?",
-      "focus": "career goals in mechatronics",
+      "question": "What impact do you hope to make through mechanical systems that integrate robotics and automation?",
+      "focus": "career goals in mechanical engineering — robotics and automation",
       "prepTime": 30,
       "responseTime": 60,
       "tier": "synthetic",
-      "source": "generic personal-engineering template — synthetic Mechatronics/Aerospace interest prompts, not Waterloo/UofT Kira archive",
+      "source": "generic personal-engineering template — rewritten 2026-08-23 Pass 3 MECHANICAL-PRIMARY — original robotics/automation as standalone field wording broadened to mechanical systems integration; synthetic practice",
       "kind": "kira_style_practice",
       "verified_kira": false
     },
     {
-      "question": "Why are you interested in the intersection of mechanical, electrical, and software engineering?",
-      "focus": "motivations",
+      "question": "Why are you interested in mechanical engineering that integrates electrical and software elements, and how does that relate to choosing mechanical as your primary discipline?",
+      "focus": "motivations — mechanical-primary integration",
       "prepTime": 30,
       "responseTime": 60,
       "tier": "synthetic",
-      "source": "generic personal-engineering template — synthetic Mechatronics/Aerospace interest prompts, not Waterloo/UofT Kira archive",
+      "source": "generic personal-engineering template — rewritten 2026-08-23 Pass 3 MECHANICAL-PRIMARY — original TRON intersection wording broadened to mechanical-primary; synthetic practice, not Waterloo/UofT Kira archive",
       "kind": "kira_style_practice",
       "verified_kira": false
     },
@@ -1161,12 +1161,12 @@
       "verified_kira": false
     },
     {
-      "question": "How do you envision the future of commercial aviation?",
-      "focus": "career goals in aerospace",
+      "question": "How do you envision the future of sustainable transportation or energy-efficient mechanical systems?",
+      "focus": "career goals in mechanical engineering — sustainable systems",
       "prepTime": 30,
       "responseTime": 60,
       "tier": "synthetic",
-      "source": "generic personal-engineering template — synthetic Mechatronics/Aerospace interest prompts, not Waterloo/UofT Kira archive",
+      "source": "generic personal-engineering template — rewritten 2026-08-23 Pass 3 MECHANICAL-PRIMARY — original commercial aviation wording was aerospace bias; synthetic practice",
       "kind": "kira_style_practice",
       "verified_kira": false
     },
@@ -1193,12 +1193,12 @@
       "verified_kira": false
     },
     {
-      "question": "What is your ultimate dream job in the mechatronics field?",
-      "focus": "career goals in mechatronics",
+      "question": "What is your ultimate dream job in mechanical engineering, including roles that integrate mechanical systems with controls or automation?",
+      "focus": "career goals in mechanical engineering — dream role",
       "prepTime": 30,
       "responseTime": 60,
       "tier": "synthetic",
-      "source": "generic personal-engineering template — synthetic Mechatronics/Aerospace interest prompts, not Waterloo/UofT Kira archive",
+      "source": "generic personal-engineering template — rewritten 2026-08-23 Pass 3 MECHANICAL-PRIMARY — original mechatronics field wording was program-bias; synthetic practice",
       "kind": "kira_style_practice",
       "verified_kira": false
     },
@@ -1223,12 +1223,12 @@
       "verified_kira": false
     },
     {
-      "question": "What do you think is the biggest challenge currently facing the aerospace industry?",
-      "focus": "career goals in aerospace",
+      "question": "What do you think is the biggest challenge currently facing mechanical engineering industries, such as sustainable manufacturing, energy, or transportation?",
+      "focus": "career goals in mechanical engineering — industry challenges",
       "prepTime": 30,
       "responseTime": 60,
       "tier": "synthetic",
-      "source": "generic personal-engineering template — synthetic Mechatronics/Aerospace interest prompts, not Waterloo/UofT Kira archive",
+      "source": "generic personal-engineering template — rewritten 2026-08-23 Pass 3 MECHANICAL-PRIMARY — original aerospace industry wording was program-bias; synthetic practice",
       "kind": "kira_style_practice",
       "verified_kira": false
     },
@@ -1253,12 +1253,12 @@
       "verified_kira": false
     },
     {
-      "question": "How do you plan to use your mechatronics degree to improve manufacturing processes?",
-      "focus": "career goals in mechatronics",
+      "question": "How do you plan to use your mechanical engineering degree to improve manufacturing processes or mechanical system design?",
+      "focus": "career goals in mechanical engineering — manufacturing",
       "prepTime": 30,
       "responseTime": 60,
       "tier": "synthetic",
-      "source": "generic personal-engineering template — synthetic Mechatronics/Aerospace interest prompts, not Waterloo/UofT Kira archive",
+      "source": "generic personal-engineering template — rewritten 2026-08-23 Pass 3 MECHANICAL-PRIMARY — original mechatronics degree wording was program-bias; synthetic practice, not Waterloo/UofT Kira archive",
       "kind": "kira_style_practice",
       "verified_kira": false
     },
@@ -1283,12 +1283,12 @@
       "verified_kira": false
     },
     {
-      "question": "How do you see the role of artificial intelligence evolving within aerospace engineering?",
-      "focus": "career goals in aerospace",
+      "question": "How do you see the role of artificial intelligence evolving within mechanical engineering, such as design, controls, or manufacturing?",
+      "focus": "career goals in mechanical engineering — AI in mechanical systems",
       "prepTime": 30,
       "responseTime": 60,
       "tier": "synthetic",
-      "source": "generic personal-engineering template — synthetic Mechatronics/Aerospace interest prompts, not Waterloo/UofT Kira archive",
+      "source": "generic personal-engineering template — rewritten 2026-08-23 Pass 3 MECHANICAL-PRIMARY — original aerospace AI wording was program-bias; synthetic practice",
       "kind": "kira_style_practice",
       "verified_kira": false
     },
